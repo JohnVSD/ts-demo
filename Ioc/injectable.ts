@@ -13,3 +13,7 @@ export function Injectable() {
     return target;
   }
 }
+
+export function isInjectable<T>(target: Type<T>) {
+  return Reflect.getMetadata(INJECTABLE_METADATA_KEY, target) === true;
+}

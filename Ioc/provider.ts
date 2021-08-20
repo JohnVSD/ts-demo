@@ -1,6 +1,6 @@
 import { Type } from './type';
 
-class InjectionToken {
+export class InjectionToken {
   constructor( public injectionIdentifier: string ) {}
 }
 
@@ -12,16 +12,19 @@ export interface BaseProvider<T> {
   provide: Token<T>;
 }
 
+// 提供一个类，用于创建依赖对象
 export interface ClassProvider<T> extends BaseProvider<T> {
   provide: Token<T>;
   useClass: Type<T>;
 }
 
+// 提供一个已存在的值，作为依赖对象
 export interface ValueProvider<T> extends BaseProvider<T> {
   provide: Token<T>;
   useValue: T;
 }
 
+// 提供一个工厂方法，用于创建依赖对象
 export interface FactoryProvider<T> extends BaseProvider<T> {
   provide: Token<T>;
   useFactory: Factory<T>;
